@@ -228,12 +228,14 @@
     };
     Http.send();
   }
-  function remove_file(file){
-    const Http = new XMLHttpRequest();
-    const url='/remove_file?file_path='+file;
-    Http.open("POST", url);
-    Http.send();
+  async function remove_file(file){
+    await fetch(`/remove_file?file_path=${file}`, {method: 'POST'})
     location.reload();
+    // const Http = new XMLHttpRequest();
+    // const url='/remove_file?file_path='+file;
+    // Http.open("POST", url);
+    // Http.send();
+    
   }
   function setting_table_visibility(){
     var current_vis_status = document.getElementById("advanced_settings_table");
